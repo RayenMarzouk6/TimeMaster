@@ -42,6 +42,6 @@ Modern UI/UX for seamless interaction and navigation.
 ## Screenshots
 ![Image-9](https://github.com/user-attachments/assets/891383bc-901c-478f-ac38-3fa991259b51)
 ![Image-4](https://github.com/user-attachments/assets/ca80a894-e314-485a-9b68-a6d0d0e75c6f)
-
-
-
+![Capture d'écran 2025-01-24 181648](https://github.com/user-attachments/assets/e66d505c-30c0-4da9-bd71-d0db9b9b8520)
+![Capture d'écran 2025-01-24 181635](https://github.com/user-attachments/assets/e7baa9e4-1b39-4be2-83e3-57bd413de545)
+![Capture d'écran 2025-01-24 181743](https://github.com/user-attachments/assets/ad7bf2b0-d120-4879-9790-42c3b04ed320)
