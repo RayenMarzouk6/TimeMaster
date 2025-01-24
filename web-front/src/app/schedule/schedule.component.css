@@ -1,0 +1,29 @@
+.schedule-container {
+    font-family: 'Poppins', sans-serif;
+
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #4e7bbf;
+    color: white;
+  }
+  
+  td:nth-child(1), /* First child */
+  td:nth-child(2) { /* Second child */
+    background-color: #4e7bbf;
+    color: white; /* Optional: Makes the text white for better contrast */
+    font-weight: bold; /* Optional: Highlights the time column */
+    text-align: center; /* Optional: Centers the text */
+  }
+  

@@ -1,0 +1,132 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<div class="users-container">
+  <div class="top-right-section">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Search"
+        class="search-input"
+        [(ngModel)]="searchQuery"
+        (keyup)="onSearch()"
+      />
+    </div>
+
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p class="admin-name">{{ userDetails.username }}</p>
+        <p class="admin-email">admin</p>
+      </div>
+    </div>
+
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+  </div>
+
+  <h2>Manage Users</h2>
+  <div class="title-underline"></div>
+
+  <p class="section-title">{{ isUpdating ? 'Update User' : 'Add a User' }}</p>
+
+  <div class="add-user-section">
+    <form (submit)="isUpdating ? updateUser() : createUser(); $event.preventDefault()" class="add-user-form">
+      <div class="form-group">
+        <label for="userName">User Name</label>
+        <input
+          type="text"
+          id="userName"
+          name="userName"
+          placeholder="Enter user name"
+          [(ngModel)]="userForm.username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="cin">CIN</label>
+        <input
+          type="text"
+          id="cin"
+          name="cin"
+          placeholder="Enter CIN"
+          [(ngModel)]="userForm.cin"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter email"
+          [(ngModel)]="userForm.email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+          [(ngModel)]="userForm.password"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" [(ngModel)]="userForm.role" name="role" required>
+          <option value="admin">Admin</option>
+          <option value="teacher">Teacher</option>
+          <option value="student">Student</option>
+        </select>
+      </div>
+      <button class="add-user-btn" type="submit">
+        <img src="assets/icons/{{ isUpdating ? 'Update' : 'Add' }}.png" alt="{{ isUpdating ? 'Update' : 'Add' }} User" width="20" height="20" />
+        {{ isUpdating ? 'Update' : 'Add' }} User
+      </button>
+    </form>
+  </div>
+
+  <p class="section-title">All Users</p>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><span>#</span></th>
+        <th><span>User Name</span></th>
+        <th><span>CIN</span></th>
+        <th><span>Email</span></th>
+        <th><span>Role</span></th>
+        <th><span>Actions</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.cin }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button class="action-btn" (click)="openUpdateForm(user)">
+            <img src="assets/icons/Button_Edit.png" alt="Update" width="80" height="30" />
+          </button>
+          <button class="action-btn" *ngIf="user.id !== undefined" (click)="deleteUser(user.id)">
+            <img src="assets/icons/Button_Del.png" alt="Delete" width="80" height="30" />
+          </button>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   <!-- Footer Section -->
+   <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+/* Remove default padding and margin from the Angular app root */
+:host {
+    display: block;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure body and html elements also have no padding or margin */
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}

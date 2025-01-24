@@ -1,0 +1,936 @@
+/* Apply Poppins font globally */
+* {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+/* Navbar styling with centered logo */
+.navbar {
+    background-color: #4e7bbf;
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 20px 20px; /* Rounded bottom */
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    height: 50px; /* Adjust the logo size */
+  }
+  
+  /* Welcome Section */
+  .welcome-section {
+    display: flex;
+    justify-content: center; /* Center the welcome section */
+    align-items: center; /* Center vertically */
+    margin-top: 20px;
+  }
+  
+  .welcome-content {
+    display: flex;
+    align-items: center; /* Align text and image vertically */
+    gap: 10px; /* Space between text and image */
+  }
+  
+  .welcome-content p {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Circular profile picture */
+    object-fit: cover; /* Ensure the image covers the circle */
+  }
+  
+  /* Section Titles */
+  h2 {
+    text-align: center; /* Center the text */
+    margin: 20px auto; /* Add margin for spacing */
+    font-size: 22px;
+    color: #333;
+  }
+  
+  /* Section Description */
+  .section-description {
+    font-size: 14px;
+    color: #808080;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .profile-description {
+    font-size: 14px;
+    color: #808080;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Cards Container */
+  .cards-container {
+    display: flex;
+    overflow-x: scroll; /* Horizontal scrolling */
+    gap: 20px;
+    margin-top: 20px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+  
+  .cards-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+  }
+  
+  .card {
+    
+    cursor: pointer;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 300px;
+    z-index: 1; /* Ensure the card is on top */
+  }
+  
+  
+  .card-image {
+    width: 100%;
+    height: 100%; /* Make the image fill the entire height of the card */
+    object-fit: cover; /* Ensure the image covers the entire card area */
+  }
+  
+  .card-content {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .card h3 {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Dots for Navigation */
+  .dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .dot.active {
+    background-color: #4e7bbf; /* Active dot color */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .card {
+      min-width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      min-width: 100px;
+    }
+  }
+  
+  /* User Dashboard Section */
+  .user-dashboard {
+    margin-top: 40px;
+  }
+  
+  .dashboard-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 20px;
+    justify-content: center; /* Center the cards */
+  }
+  
+  .dashboard-card {
+    cursor: pointer;
+    width: 200px;
+    background-color: #f9f9f9;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-icon img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .card-content h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .card-content p {
+    font-size: 14px;
+    color: #808080;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-card {
+      width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .dashboard-card {
+      width: 120px;
+    }
+  }
+  
+  /* Navbar styling with links */
+  .navbar {
+    background-color: #4e7bbf;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-left .logo {
+    height: 50px;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-links li {
+    display: inline;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .navbar-links a:hover {
+    color: #ffd700; /* Gold color on hover */
+  }
+  
+  /* Footer styling */
+  .footer {
+    background-color: #4e7bbf;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+    border-radius: 20px 20px 0 0;
+    bottom: 0;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  /* Full-page Overlay */
+.profile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Make sure it's on top */
+  }
+  
+  .profile-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-form-container h3 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .profile-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-form-container label {
+    margin-bottom: 8px;
+  }
+  
+  .profile-form-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .profile-form-container button {
+    padding: 10px;
+    background-color: #4e7bbf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .profile-form-container button:hover {
+    background-color: #365ab2;
+  }
+  
+  .profile-form-container button[type="button"] {
+    background-color: #ccc;
+  }
+  
+  .profile-form-container button[type="button"]:hover {
+    background-color: #aaa;
+  }
+  button {
+    padding: 10px;
+    background-color: #4e7bbf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #365ab2;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  /* Style for the close button inside the messages container */
+.messages-container {
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: darkred;
+  }
+
+.sender {
+    font-weight: bold;
+    color: #4e7bbf;
+  }
+
+  .timestamp {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .message-body {
+    margin-left: 20px;
+  }
+
+  .subject {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .content {
+    font-size: 14px;
+    color: #555;
+  }
+ 
+
+ 
+  /* Support Container Styles */
+  .support-container {
+    position: relative;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .support-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .support-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .support-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-field, .textarea-field {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .input-field:focus, .textarea-field:focus {
+    border-color: #4e7bbf;
+    outline: none;
+  }
+  
+  .textarea-field {
+    resize: vertical;
+    height: 120px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .submit-button {
+    padding: 12px 20px;
+    background-color: #4e7bbf;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #3658b0;
+  }
+  
+  .cancel-button {
+    padding: 12px 20px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Animation for Fade-in Effect */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .details-form-container {
+    background: #ffffff;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
+  }
+  
+  .details-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .details-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4e7bbf;
+  }
+  
+  .details-subtitle {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .details-content {
+    margin-top: 10px;
+  }
+  
+  .details-section {
+    margin-bottom: 15px;
+  }
+  
+  .details-section h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .details-section p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .edit-button,
+  .close-button {
+    background: #4e7bbf;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .edit-button:hover,
+  .close-button:hover {
+    background: #4e7bbf;
+  }
+  
+  .edit-button:focus,
+  .close-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.4);
+  }
+ 
+  
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+table th {
+  background-color: #4169e1;
+  color: white;
+  font-weight: bold;
+}
+
+table td {
+  background-color: #f9f9f9;
+}
+
+table tr:nth-child(even) td {
+  background-color: #f1f1f1;
+}
+
+table tr:hover {
+  background-color: #e1e1e1;
+}
+
+/* Overlay Style */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+
+/* Section Header */
+.schedule-container h2 {
+  font-size: 1.5rem;
+  color: #4e7bbf;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Section Description */
+.section-description {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ff0000;
+}
+
+/* Print Button */
+.print-button {
+  background-color: #4e7bbf;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.print-button:hover {
+  background-color: #365a9a;
+}
+
+/* Schedule Section */
+.schedule-section {
+  margin-top: 20px;
+}
+
+/* Schedule Grid */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Day Group */
+.day-group {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Time Slot */
+.time-slot {
+  margin-top: 10px;
+}
+/* Schedule container style */
+.schedule-container {
+  position: relative;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: auto;
+  margin: 0 auto;
+}
+
+
+
+.schedule-container {
+  max-height: 80vh; /* Set a max height for the schedule container (80% of the viewport height) */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 10px; /* Optional: adds padding for the scroll bar */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff; /* Background color for a clean, professional look */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.schedule-section {
+  padding: 20px;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Creates 7 equal-width columns for each day */
+  gap: 15px;
+  width: 100%;
+}
+
+.day-group {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Light background for each day */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for each day block */
+}
+
+.day-group h3 {
+  font-size: 1.2em;
+  color: #4e7bbf; /* Blue color for day titles */
+  font-weight: bold;
+  text-align: center;
+}
+
+.time-slot {
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.schedule-item {
+  background-color: #f4f4f4;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.schedule-item:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.schedule-item p {
+  margin: 5px 0;
+}
+
+.schedule-item strong {
+  font-size: 1.1em;
+  color: #333; /* Dark color for teacher name */
+}
+
+.schedule-item em {
+  font-size: 1em;
+  color: #555; /* Lighter color for subject */
+}
+
+.room {
+  font-size: 0.9em;
+  color: #888; /* Lighter color for room info */
+  font-style: italic;
+}
+
+h2 {
+  font-size: 2em;
+  color: #4e7bbf;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.section-description {
+  font-size: 1.1em;
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+
+button:hover {
+  background-color: #365f9e; /* Darker shade on hover */
+}
+
+.print-button {
+  margin-bottom: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  color: #333;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #e74c3c;
+}
+h4 {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+/* No Classes Text Styling */
+.no-classes-text {
+  font-size:0.8em;/* Slightly larger text for emphasis */
+  font-weight: 500; /* Medium weight for a professional look */
+  color: #4a4a4a; /* Dark gray for a classy, neutral tone */
+  text-align: center; /* Center align for balance */
+  background-color: #f4f4f4; /* Light background for contrast */
+
+}
+
+.lunch-break-text {
+  color: rgb(200, 64, 64);
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/* Print Media Query */
+@media print {
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 8pt; /* Smaller text for print */
+    margin: 0;
+    padding: 0;
+  }
+
+  .schedule-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    page-break-before: always;
+  }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 3 columns for 6 grids */
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .day-group {
+    border: 1px solid #000;
+    padding: 5px;
+    font-size: 0.7em; /* Smaller font size for print */
+    page-break-inside: avoid;
+  }
+
+  .time-slot {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+  }
+
+  .schedule-item {
+    margin-bottom: 5px;
+    padding: 3px;
+  }
+
+  .lunch-break-text, .no-classes-text {
+    font-size: 0.7em;
+    font-style: italic;
+  }
+
+  .print-button {
+    display: none;
+  }
+
+  /* Force everything to fit within one page */
+  @page {
+    size: A4;
+    margin: 5mm; /* Reduce margins to fit more content */
+  }
+
+  /* Prevent page breaks inside the schedule */
+  .schedule-section {
+    page-break-before: always;
+  }
+
+  /* Ensure content fits on one page */
+  .schedule-container {
+    page-break-after: always;
+  }
+}

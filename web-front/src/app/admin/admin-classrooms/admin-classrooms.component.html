@@ -1,0 +1,83 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<div class="classrooms-container">
+    <!-- Profile and Notification Section -->
+    <div class="top-right-section">
+          <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+      </div>
+
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+            </div>
+            <div class="profile-info">
+                <p class="admin-name">{{ userDetails.username }}</p>
+                <p class="admin-email">admin</p>
+            </div>
+            </div>
+
+        <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+    </div>
+
+    <h2>Manage Classrooms (Salle de Cours)</h2>
+    <div class="title-underline"></div>
+
+    <p class="section-title">Add a Classroom</p>
+
+    <div class="add-classroom-section">
+        <form class="add-classroom-form" (ngSubmit)="isEditing ? updateClassroom() : createClassroom()">
+            <div class="form-group">
+                <label for="classroomName">Classroom Name</label>
+                <input type="text" id="classroomName" [(ngModel)]="isEditing ? editingClassroom.name : newClassroom.name" name="classroomName" placeholder="Enter classroom name" required>
+            </div>
+
+            <!-- Add Institution ID Field -->
+            <div class="form-group">
+                <label for="institutionId">Institution ID</label>
+                <input type="text" id="institutionId" [(ngModel)]="isEditing ? editingClassroom.institutionId : newClassroom.institutionId" name="institutionId" placeholder="Enter institution ID" required>
+            </div>
+       
+            <button class="add-classroom-btn" type="submit">
+                <img src="assets/icons/Add.png" alt="Add Classroom" width="20" height="20">
+                {{ isEditing ? 'Update Classroom' : 'Add Classroom' }}
+            </button>
+        </form>
+    </div>
+
+    <p class="section-title">All Classrooms</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th><span>#</span></th>
+                <th><span>Classroom Name</span></th>
+                <th><span>Institution ID</span></th> <!-- Added Institution ID Column -->
+                <th><span>Actions</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let classroom of classrooms">
+                <td>{{ classroom.id }}</td>
+                <td>{{ classroom.name }}</td>
+                <td>{{ classroom.institution?.name }}</td> <!-- Accessing institution name -->
+                <td>
+                    <!-- Edit button 
+                    <button class="action-btn" (click)="editClassroom(classroom)">
+                        <img src="assets/icons/Button_Edit.png" alt="Update" width="80" height="30">
+                    </button>-->
+                    <!-- Delete button -->
+                    <button class="action-btn" (click)="deleteClassroom(classroom.id)">
+                        <img src="assets/icons/Button_Del.png" alt="Delete" width="80" height="30">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     <!-- Footer Section -->
+  <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

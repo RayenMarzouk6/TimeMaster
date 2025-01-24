@@ -1,0 +1,177 @@
+* {
+    font-family: 'Poppins', sans-serif;
+  }
+  body,html{
+    margin: 0;
+    background-color: #fbfbfb;
+
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #fbfbfb;
+    height: 97.9vh; /* Adjust height to 100% of the viewport */
+    overflow: hidden; /* Prevent scrolling */
+  }
+  
+  .computer-image {
+    max-width: 536px;
+    height: 492px;
+    z-index: 2;
+    position: relative;
+    margin-top: 177px;
+    margin-left: -400px;
+  }
+  
+  .rectangle {
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .rectangle-gray {
+    position: absolute;
+    width: 635px;
+    height: 400px;
+    left: 100px;
+    top: 5px; 
+    background: #7B7E81;
+    border-top-left-radius: 155.53px;
+    border-bottom-right-radius: 0px;
+    transform: rotate(-90deg);
+  }
+  
+  .rectangle-blue {
+    position: absolute;
+    width: 635px;
+    height: 300px;
+    left: 30px;
+    top: 1px; 
+    background: #4e7bbf;
+    border-radius: 105.53px;
+    transform: rotate(-97.17deg);
+  }
+  
+  .logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: auto;
+  }
+  
+  .form-container {
+    background-color: #fbfbfb;
+
+    position: absolute;
+    top: 200px;
+    right: 200px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    z-index: 3; /* Ensure form is above the rectangles */
+  }
+  
+  .form-container h2 {
+    font-weight: 200; /* Light font weight for the email */
+    color: #333333;
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+    font-size: 18px; /* Smaller font size for the email */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #666;
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+  }
+  
+  .form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-container button {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #4e7bbf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .form-container button:hover {
+    background-color: #365f9e;
+  }
+  
+  .register-text {
+    margin: 20px 0;
+    font-size: 14px;
+    color: #666;
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+  }
+  
+  .register-text a {
+    color: #AE2025; /* Stronger red */
+    text-decoration: none;
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 768px) {
+    .computer-image {
+      margin-left: 0; /* Adjust the image position */
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .form-container {
+      width: 90%; /* Make the form container responsive */
+      top: 150px; /* Adjust position */
+      right: 10px;
+    }
+  
+    .rectangle-gray, .rectangle-blue {
+      width: 100%; /* Make rectangles responsive */
+      left: 0;
+      top: 0;
+      transform: none; /* Remove rotation */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form-container {
+      width: 100%; /* Full width for smaller screens */
+      top: 50px;
+      right: 0;
+    }
+  
+    .form-container h2 {
+      font-size: 16px; /* Adjust font size for smaller screens */
+    }
+  
+    .form-container input, .form-container button {
+      font-size: 14px; /* Adjust input and button font size */
+    }
+  
+    .rectangle-gray, .rectangle-blue {
+      width: 100%; /* Full width for smaller screens */
+      height: auto;
+      left: 0;
+      top: 0;
+      transform: none; /* Remove rotation */
+    }
+  }
+  

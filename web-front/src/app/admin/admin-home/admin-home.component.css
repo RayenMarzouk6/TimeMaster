@@ -1,0 +1,334 @@
+/* admin-home.component.css */
+.admin-home-container {
+    height: 100%; /* Full height of the viewport */
+}
+
+app-admin-sidebar {
+    width: 250px; /* Adjust the sidebar width */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1; /* Ensure the sidebar stays on top */
+}
+
+.top-right-section {
+    margin-top:0px;
+
+    margin-left: 250px; /* Push the content to the right of the sidebar */
+    position: absolute; /* Position the section relative to the container */
+    top: 0; /* Align to the top */
+    right: 50px; /* Align to the right with margin */
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Vertically center the items */
+}
+
+.profile-section {
+    display: flex; /* Align profile picture and text horizontally */
+    align-items: center; /* Vertically center the items */
+    margin-right: 20px; /* Space between the profile and the notification icon */
+}
+
+.profile-pic {
+    background-color: #4e7bbf; /* Background color for the circle */
+    border-radius: 50%; /* Make the image circular */
+    width: 40px; /* Set width */
+    height: 40px; /* Set height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Space between profile picture and text */
+}
+
+.profile-img {
+    width: 30px; /* Set the image size */
+    height: 30px; /* Set the image size */
+    border-radius: 50%; /* Ensure the image is circular */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column; /* Stack name and email vertically */
+    font-family: 'Poppins', sans-serif;
+    margin-right: 100px; /* Adjust the margin to ensure proper spacing */
+}
+
+.admin-name {
+    font-weight: 700; /* Bold the name */
+    color: #2e3b47; /* Text color */
+    margin-bottom: 0px; /* Reduce space between name and email */
+}
+
+.admin-email {
+    font-weight: 300; /* Light font weight for the email */
+    color: #808080; /* Text color */
+    font-size: 12px; /* Smaller font size for the email */
+    margin-top: 0; /* Remove any default margin */
+}
+
+.notif-image {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Maintain the aspect ratio */
+}
+
+.search-image {
+    width: auto; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 350px;
+    margin-top: 10px;
+}
+
+/* Welcome Container */
+
+.welcome-text {
+    font-weight: 700; /* Bold the welcome text */
+    font-size: 24px; /* Larger font size for the welcome text */
+    margin-bottom: 10px; /* Space between welcome and info text */
+}
+
+.info-text {
+    font-weight: 300; /* Light font weight for the info text */
+    color: #808080; /* Gray text color */
+    font-size: 14px; /* Slightly smaller font size */
+}
+
+/* Welcome Container */
+
+.welcome-container {
+    margin-left: 250px; /* Ensure the welcome section is aligned correctly */
+    border-radius: 20px; /* Make the image circular */
+    margin-top: 80px;
+    width:1200px;
+    background-color: #4e7bbf; /* Blue background */
+    color: white; /* White text */
+    padding: 20px;
+    height: 200px; /* Set height */
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    justify-content: center; /* Vertically center text */
+    font-family: 'Poppins', sans-serif;
+}
+
+.welcome-text {
+    font-weight: 700; /* Bold the welcome text */
+    font-size: 24px; /* Larger font size for the welcome text */
+    margin-bottom: 10px; /* Space between welcome and info text */
+}
+
+.info-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Light font weight for the info text */
+    color: white; /* Gray text color */
+    font-size: 14px; /* Slightly smaller font size */
+}
+.welcome-image {
+    height: 230px; /* Adjust the height of the image */
+    width: 600px; /* Maintain the aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    margin-left: 600px;
+    margin-top: -199px;
+}
+  .date-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: white;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 50px;
+  }
+  /* Cards Section */
+  .cards-container {
+    display: flex;
+    justify-content: flex-start; /* Align cards to the start */
+    align-items: center;
+    margin-top: 20px; /* Adjust spacing from the welcome container */
+    gap: 90px; /* Minimized spacing between cards */
+    margin-left: 250px;
+}
+
+.card {
+    border: 4px solid #ffffff; /* Default light border */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    width: 150px; /* Adjust the card width */
+    font-family: 'Poppins', sans-serif;
+    height: 150px;
+}
+.card:hover {
+    border: 4px solid #4e7bbf; /* Thick blue border on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.card-number {
+    margin-top: -11px;
+    font-size: 20px; /* Larger font for numbers */
+    font-weight: 1000; /* Bold numbers */
+    color: #2e3b47; /* Black text */
+    margin-bottom: 0px; /* Space between number and text */
+}
+
+.card-text {
+    font-size: 14px; /* Smaller font for description */
+    font-weight: 300; /* Thin text */
+    color: #808080; /* Gray text */
+}
+.card-icon {
+    width: 100px; /* Adjust the icon size */
+    height: 100px; /* Adjust the icon size */
+    margin-bottom: 0px; /* Space between the icon and number */
+}
+
+/* Section Image */
+.section-image {
+    width: 900px; /* Full width */
+    height:300px;
+    margin-left: 200px;
+    margin-top: -30px;
+  }
+  /* Additional Section Titles */
+.dashboard-title p,
+.enrolled-courses-title p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #2e3b47;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Styling for Dashboard Title */
+.dashboard-title {
+    margin-left: 250px;
+    margin-top: 20px;
+}
+
+/* Styling for Enrolled Courses Title */
+.enrolled-courses-title {
+    margin-left: 250px;
+}
+
+.right-section {
+    width: 25%; /* Adjust width for the right section */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.left-section{
+    flex-direction: column;
+
+}
+
+/* New Section for Teachers */
+.teachers-container {
+    display: flex; /* Align images horizontally */
+    gap: 20px; /* Space between images */
+    margin-left: -100px;
+    margin-top: -25px; /* Add space from previous section */
+}
+
+/* Teacher Image */
+.teacher-image {
+    width: 100px; /* Adjust the size of the image */
+    height: 100px; /* Maintain the aspect ratio */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image fits well */
+    border: 4px solid #4e7bbf; /* Add border with the specified color */
+}
+
+
+.section-layout {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0px;
+}
+.teacher-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #2e3b47;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-left: -250px;
+    margin-top: -50px;
+}
+.notice-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #2e3b47;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: -20px;
+}
+/* Section Image */
+.se-image {
+    margin-left: -50px;
+    margin-top: -100px;
+  }
+  .notice-title-container {
+    margin-left: -240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.see-all {
+    font-size: 14px;
+    color: #4e7bbf;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+.see-all:hover {
+    text-decoration: underline;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    margin-right: 550px;
+    position: relative;
+    width: 250px; /* Adjust the width as needed */
+    height: 50px; /* Set the height to a small value */
+    background-color: #ffffff;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #808080; /* Search text color */
+    padding-left: 10px;
+    border-radius: 25px;
+}
+
+.search-input::placeholder {
+    color: #808080; /* Placeholder text color */
+    text-align: right; /* Align the placeholder text to the right */
+}
+
+
+/* Optional: Adjust the notification and profile section */
+.top-right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+/* Footer Styling */
+.footer {
+    text-align: center; /* Center-align the text */
+    padding: 20px 0; /* Add padding above and below the text */
+    font-size: 14px; /* Set font size */
+    color: #808080; /* Gray color for the text */
+    position: absolute;
+margin-left: 700px;
+}

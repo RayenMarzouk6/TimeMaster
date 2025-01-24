@@ -1,0 +1,52 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<div class="complaints-container">
+  <!-- Profile and Notification Section -->
+  <div class="top-right-section">
+     <!-- Search Bar -->
+     <div class="search-bar">
+      <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p class="admin-name">{{ userDetails.username }}</p>
+        <p class="admin-email">admin</p>
+      </div>
+    </div>
+
+    <!-- Notification Icon -->
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+  </div>
+
+    <h2>Manage Complaints</h2>
+    <div class="title-underline"></div>
+
+    <p class="section-title">All Reclamations</p>
+
+    <!-- Reclamation List Section -->
+    <div class="reclamation-list">
+        <div class="reclamation-card" *ngFor="let reclamation of reclamations">
+            <div class="reclamation-header">
+                <div class="icon-container">
+                    <img src="assets/compl/Error.png" alt="Complaint Icon" />
+                </div>
+                <div class="reclamation-info">
+                    <strong class="reclamation-name">{{ reclamation.name }}</strong>
+                    <span class="reclamation-email">({{ reclamation.email }})</span>
+                </div>
+            </div>
+            <p class="reclamation-message">{{ reclamation.message }}</p>
+            <p class="reclamation-date"><small>Submitted on: {{ reclamation.createdAt }}</small></p>
+        </div>
+    </div>
+     <!-- Footer Section -->
+  <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

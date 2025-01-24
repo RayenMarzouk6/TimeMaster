@@ -1,0 +1,84 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="course-container">
+  <div class="top-right-section">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+    </div>
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p class="admin-name">{{ userDetails.username }}</p>
+        <p class="admin-email">admin</p>
+      </div>
+    </div>
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+  </div>
+
+  <h2>Manage Courses (Matières)</h2>
+  <div class="title-underline"></div>
+
+  <p class="section-title">{{ courseToUpdate ? 'Update Course' : 'Add a Course' }}</p>
+  <div class="add-course-section">
+    <form class="add-course-form">
+      <div class="form-group">
+        <label for="courseName">Course Name</label>
+        <input type="text" id="courseName" name="courseName" [(ngModel)]="courseName" placeholder="Enter course name" required />
+      </div>
+      
+      <!-- Classroom selection (for adding/updating courses) -->
+      <div class="form-group">
+        <label for="classrooms">Select Classrooms</label>
+        <select id="classrooms" name="classrooms" [(ngModel)]="selectedClassrooms" multiple>
+          <option *ngFor="let classroom of classrooms" [value]="classroom.id">{{ classroom.name }}</option>
+        </select>
+      </div>
+
+      <button class="add-course-btn" type="button" (click)="courseToUpdate ? updateCourse() : addCourse()">
+        <img src="assets/icons/Add.png" alt="{{ courseToUpdate ? 'Update' : 'Add' }} Course" width="20" height="20" />
+        {{ courseToUpdate ? 'Update Course' : 'Add Course' }}
+      </button>
+    </form>
+  </div>
+
+  <p class="section-title">All Courses</p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Course Name</th>
+        <!--<th>Classroom IDs</th> <!-- New column for classroom IDs -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ course.name }}</td>
+        <!--<td>
+          <!-- Display classroom IDs associated with each course
+          <span *ngFor="let classroomId of course.classroomIds; let last = last">
+            {{ course.classroomId }}<span *ngIf="!last">, </span>
+          </span>
+
+        </td>
+         -->
+        <td>
+          <button class="action-btn" (click)="openUpdateForm(course)">
+            <img src="assets/icons/Button_Edit.png" alt="Update" width="80" height="30" />
+          </button>
+          <button class="action-btn" (click)="deleteCourse(course.id)">
+            <img src="assets/icons/Button_Del.png" alt="Delete" width="80" height="30" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   <!-- Footer Section -->
+   <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

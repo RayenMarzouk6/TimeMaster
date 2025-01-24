@@ -1,0 +1,54 @@
+<div class="schedule-container">
+    <h2>Schedule Timetable</h2>
+  
+    <!-- Filter Section -->
+    <div class="filters">
+      <label for="dayFilter">Day:</label>
+      <select id="dayFilter" [(ngModel)]="selectedDay">
+        <option value="">All</option>
+        <option value="Monday">Monday</option>
+        <option value="Mardi">Tuesday</option>
+        <option value="Mercredi">Wednesday</option>
+        <option value="Jeudi">Thursday</option>
+        <option value="Vendredi">Friday</option>
+        <option value="Samedi">Saturday</option>
+      </select>
+  
+      <label for="teacherFilter">Teacher:</label>
+      <input id="teacherFilter" [(ngModel)]="selectedTeacher" placeholder="Teacher Name" />
+  
+      <label for="classFilter">Class:</label>
+      <input id="classFilter" [(ngModel)]="selectedClass" placeholder="Class Name" />
+    </div>
+  
+    <!-- Table Section -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Day</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Duration</th>
+          <th>Teacher</th>
+          <th>Subject</th>
+          <th>Classroom</th>
+          <th>Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of filteredSchedules">
+          <td>{{ schedule.id }}</td>
+          <td>{{ schedule.day }}</td>
+          <td>{{ schedule.startTime }}</td>
+          <td>{{ schedule.endTime }}</td>
+          <td>{{ schedule.duree }}</td>
+          <td>{{ schedule.teacher?.name }}</td>
+          <td>{{ schedule.subject?.name }}</td>
+          <td>{{ schedule.classroom?.name }}</td>
+          <td>{{ schedule.class?.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

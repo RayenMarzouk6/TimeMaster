@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Recovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div>
+      <div class="rectangle rectangle-blue"></div>
+      <div class="rectangle rectangle-gray"></div>
+      <aside class="illustration">
+        <img src="assets/computer2.png" alt="Registration Illustration" class="computer-image" />
+      </aside>
+    </div>
+    <img src="assets/logoTM.png" alt="Logo" class="logo" />
+    <div class="form-container">
+      <h2>Retrieve Your Password</h2>
+      <form (submit)="onSubmit()">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Enter your email" />
+        
+        <label for="cin">CIN</label>
+        <input type="text" id="cin" name="cin" [(ngModel)]="cin" required placeholder="Enter your CIN" />
+        
+        <button type="submit">Submit</button>
+      </form>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      <p class="register-text">Need assistance? <a href="#">Contact Administration</a></p>
+    </div>
+  </body>
+</html>

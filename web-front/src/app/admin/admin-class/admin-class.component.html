@@ -1,0 +1,111 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="class-container">
+  <!-- Profile and Notification Section -->
+  <div class="top-right-section">
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+      </div>
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p class="admin-name">{{ userDetails.username }}</p>
+        <p class="admin-email">admin</p>
+      </div>
+    </div>
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+  </div>
+
+  <h2>Manage Classes (Groupes d'Étudiants)</h2>
+  <div class="title-underline"></div>
+
+  <!-- Add/Update Class Section -->
+  <p class="section-title">{{ editingClass ? 'Update Class' : 'Add a Class' }}</p>
+  <div class="add-class-section">
+    <form (ngSubmit)="addClass()" class="add-class-form">
+      <div class="form-group">
+        <label for="className">Class Name</label>
+        <input
+          type="text"
+          id="className"
+          name="className"
+          [(ngModel)]="newClass.name"
+          placeholder="Enter class name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="classLevel">Class Level</label>
+        <input
+          type="text"
+          id="classLevel"
+          name="classLevel"
+          [(ngModel)]="newClass.level"
+          placeholder="Enter class level"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="students">Students</label>
+        <select
+          id="students"
+          name="students"
+          [(ngModel)]="newClass.studentNames"
+          multiple
+          required
+        >
+          <option *ngFor="let student of students" [value]="student">
+            {{ student }}
+          </option>
+        </select>
+      </div>
+      <button class="add-class-btn" type="submit">
+        <img src="assets/icons/Add.png" alt="Add Class" width="20" height="20" />
+        {{ editingClass ? 'Update Class' : 'Add Class' }}
+      </button>
+    </form>
+  </div>
+
+  <!-- Classes Table -->
+  <p class="section-title">All Classes</p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Class Name</th>
+        <th>Level</th>
+        <th>Students</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let class of classes">
+        <td>{{ class.id }}</td>
+        <td>{{ class.name }}</td>
+        <td>{{ class.level }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let student of class.students">
+              {{ student.username }} ({{ student.cin }}, {{ student.email }})
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button class="action-btn" (click)="editClass(class.id)">
+            <img src="assets/icons/Button_Edit.png" alt="Update" width="80" height="30">
+          </button>
+          <button class="action-btn" (click)="deleteClass(class.id)">
+            <img src="assets/icons/Button_Del.png" alt="Delete" width="80" height="30" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   <!-- Footer Section -->
+   <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

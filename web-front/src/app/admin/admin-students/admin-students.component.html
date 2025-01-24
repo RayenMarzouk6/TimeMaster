@@ -1,0 +1,92 @@
+<app-admin-sidebar></app-admin-sidebar>
+<!-- Profile and Notification Section -->
+<div class="top-right-section">
+         <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+      </div>
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <div class="profile-pic">
+            <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+        </div>
+        <div class="profile-info">
+            <p class="admin-name">{{ userDetails.username }}</p>
+            <p class="admin-email">admin</p>
+        </div>
+        
+    </div>
+
+    <!-- Notification Icon -->
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+</div>
+
+<div class="students-container">
+    <h2>Manage Students</h2>
+    <div class="title-underline"></div>
+  
+    <!-- Add/Update Student Title 
+    <p class="section-title">Add a Student</p>
+  
+    Add/Update Student Section
+    <div class="add-student-section">
+        <form class="add-student-form" (ngSubmit)="addStudent()">
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" [(ngModel)]="studentName" name="studentName" placeholder="Enter student name" required>
+            </div>
+
+            Select Class Dropdown 
+            <div class="form-group">
+                <label for="classSelect">Select Class</label>
+                <select id="classSelect" [(ngModel)]="selectedClassId" name="classSelect" required>
+                    <option *ngFor="let class of classes" [value]="class.id">{{ class.name }}</option>
+                </select>
+            </div>
+
+            <button class="add-student-btn" type="submit">
+                <img src="assets/icons/Add.png" alt="Add Student" width="20" height="20">
+                Add Student
+            </button>
+        </form>
+    </div>
+-->
+  
+    <!-- Students Title -->
+    <p class="section-title">All Students</p>
+  
+    <!-- Students Table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <!--<th><span>#</span></th>-->
+                <th><span>Student Name</span></th>
+              <!--  <th><span>Class</span></th>-->
+              <!-- <th><span>Actions</span></th>--> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students">
+                <!--<td>{{ student.id }}</td>-->
+                <td>{{ student.name || 'No name' }}</td> <!-- Display student name -->
+         <!--     <td>{{ student.class ? student.class.name : 'No class' }}</td> <!-- Display class name -->
+                <!-- <td>
+                    Update button
+                    <button class="action-btn">
+                        <img src="assets/icons/Button_Edit.png" alt="Update" width="80" height="30">
+                    </button>
+                     Delete button 
+                    <button class="action-btn" (click)="deleteStudent(student.id)">
+                        <img src="assets/icons/Button_Del.png" alt="Delete" width="80" height="30">
+                    </button>
+                </td>
+            -->
+            </tr>
+        </tbody>
+    </table>
+     <!-- Footer Section -->
+  <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

@@ -1,0 +1,288 @@
+<div class="teacher-home">
+    <!-- Navbar with Logo and Links -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <img src="assets/logoTM.png" alt="Logo" class="logo">
+      </div>
+      <div class="navbar-right">
+        <div class="welcome-section">
+          <div class="welcome-content">
+            <p>Welcome, <strong>{{ userDetails.username }}</strong></p> <!-- Display the actual username -->
+            <div class="profile-pic">
+              <img src="assets/student1.png" alt="Profile Picture" class="profile-img" (click)="logout()">
+            </div>
+            </div>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- Teacher Dashboard Section -->
+    <section id="dashboard" class="teacher-dashboard">
+      <h2 style="text-align: center; margin: 20px auto; font-size: 22px; color: #333;">🎓 Teacher Dashboard</h2>
+    
+        <p class="section-description">
+          Manage your classes, assignments, and communications seamlessly.
+        </p>
+        <div class="dashboard-cards-container">
+          <div class="dashboard-card" *ngFor="let item of dashboardItems" 
+               (click)="item.title === 'Manage Profile' ? toggleProfileForm() : 
+                        (item.title === 'Profile Details' ? toggleProfile() : 
+                        (item.title === 'Messages' ? toggleMessages() : 
+                        (item.title === 'My Schedule' ? toggleSchedule() : 
+                        (item.title === 'Support Center' ? toggleSupport() :null))))">
+            <div class="card-icon">
+              <img [src]="item.icon" alt="{{ item.title }} Icon">
+            </div>
+            <div class="card-content">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>      
+    </section>
+    <div *ngIf="isProfileVisible" class="details-overlay">
+        <div class="details-form-container">
+          <button class="close-button" (click)="toggleProfile()">❌</button>
+          <div class="details-header">
+            <img
+              *ngIf="teacherProfile.photoUrl"
+              [src]="teacherProfile.photoUrl"
+              alt="{{ teacherProfile.name }}"
+              style="border-radius: 50%; width: 80px; height: 80px;"
+            />
+           <!-- <h2 class="details-title">{{ userDetails.username }}</h2>
+            <h2 class="details-title">Hello</h2>-->
+            <p class="details-subtitle">Username: {{ userDetails.username }}</p>
+          </div>
+          <div class="details-content">
+            <div class="details-section">
+              <h3>User ID</h3>
+              <p>{{ userDetails.id }}</p>
+            </div>
+            <div class="details-section">
+              <h3>Role</h3>
+              <p>{{ userDetails.role }}</p>
+            </div>
+            <div class="details-section">
+              <h3>Email</h3>
+              <p>{{ userDetails.email }}</p>
+            </div>
+            <div class="details-section">
+              <h3>CIN</h3>
+              <p>{{ userDetails.cin }}</p>
+            </div>
+            <div class="details-section">
+              <h3>Contact</h3>
+              <p>Email: {{ userDetails.email }}</p>
+              <p *ngIf="teacherProfile.phone">Phone: +2185656565</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    <!-- Full-page Overlay Form for Manage Profile -->
+    <div *ngIf="isProfileFormVisible" class="profile-overlay">
+        <div class="profile-form-container">
+          <h3 class="profile-title">Manage Profile</h3>
+          <p class="profile-description">Update your details below.</p>
+          <form class="profile-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required class="input-field">
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required class="input-field">
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required class="input-field">
+    
+            <div class="button-container">
+              <button type="submit" class="submit-button">Save Changes</button>
+              <button type="button" class="cancel-button" (click)="toggleProfileForm()">Cancel</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  
+<!-- Class Schedule Section -->
+<div *ngIf="isScheduleVisible" class="overlay">
+  <section id="schedule" class="schedule-container">
+    <h2>📅 Class Schedule</h2>
+    <p class="section-description">Your teaching schedule with subjects and classroom assignments.</p>
+    <button class="close-button" (click)="toggleSchedule()">❌</button>
+
+
+    <!-- Filter Section -->
+    <div class="filters">
+      <label for="dayFilter">Day:</label>
+      <select id="dayFilter" [(ngModel)]="selectedDay">
+        <option value="">All</option>
+        <option value="Lundi">Lundi</option>
+        <option value="Mardi">Mardi</option>
+        <option value="Mercredi">Mercredi</option>
+        <option value="Jeudi">Jeudi</option>
+        <option value="Vendredi">Vendredi</option>
+        <option value="Samedi">Samedi</option>
+      </select>
+
+      <label for="teacherFilter">Teacher:</label>
+      <input id="teacherFilter" [(ngModel)]="selectedTeacher" placeholder="Teacher Name" />
+
+      <label for="classFilter">Class:</label>
+      <input id="classFilter" [(ngModel)]="selectedClass" placeholder="Class Name" />
+          <!-- Print Button -->
+    <button class="print-button" (click)="printSchedule()">Print</button>
+
+    </div>
+
+    <!-- Schedule Table -->
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th *ngFor="let day of days">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let slot of timeSlots">
+        <td>{{ slot.time }}</td>
+        <td *ngFor="let day of days">
+          <div *ngIf="slot.time === '12:00 - 13:00'; else otherSlots">
+            <p class="lunch-break">Lunch Break</p>
+          </div>
+          <ng-template #otherSlots>
+            <div *ngIf="getCoursesForSlotAndDay(slot, day).length === 0">
+              <p class="no-schedule">No classes scheduled</p>
+            </div>
+            <div *ngFor="let schedule of getCoursesForSlotAndDay(slot, day); let last = last">
+              <p><strong>Class: {{ schedule.classroom?.name }}</strong></p>
+              <p>Teacher: {{ schedule.teacher?.name }}</p>
+              <p>Subject: {{ schedule.subject?.name }}</p>
+              <!-- Show the line only if it's not the last schedule -->
+              <hr *ngIf="!last" class="smooth" />
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+    </div>
+  </section>
+</div>
+
+
+    
+  
+    <!-- Messages Section -->
+    <div *ngIf="isMessagesVisible" class="overlay">
+        <div class="messages-container">
+          <button class="close-button" (click)="toggleMessages()">❌</button>
+          <h2>📬 Messages</h2>
+          <ul class="messages-list">
+            <li *ngFor="let message of messages" class="message-item">
+              <div class="message-header">
+                <strong class="sender">{{ message.sender }}</strong>
+                <span class="timestamp">date</span>
+              </div>
+              <div class="message-body">
+                <p class="subject"><strong>Subject:</strong> {{ message.subject }}</p>
+                <p class="content">{{ message.content }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </div>
+  
+  <!-- Support Section -->
+<div *ngIf="isSupportVisible" class="overlay">
+  <div class="support-container">
+    <h3 class="support-title">Contact Support Center</h3>
+    <form class="support-form" (ngSubmit)="submitReclamation()">
+      <label for="name">Full Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your full name"
+        required
+        class="input-field"
+        [(ngModel)]="reclamationData.name"
+        #name="ngModel"
+      />
+      <div *ngIf="name.invalid && name.touched" class="error-message">Name is required.</div>
+
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="input-field"
+        [(ngModel)]="reclamationData.email"
+        disabled
+      />
+
+      <label for="message">Message:</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Describe your issue"
+        required
+        class="textarea-field"
+        [(ngModel)]="reclamationData.message"
+        #message="ngModel"
+      ></textarea>
+      <div *ngIf="message.invalid && message.touched" class="error-message">Message is required.</div>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button" [disabled]="!name.valid || !message.valid">
+          Submit
+        </button>
+        <button type="button" class="cancel-button" (click)="toggleSupport()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  
+    <!-- Conferences Section -->
+    <section id="conferences" class="conferences">
+        <h2>🎊 Upcoming Conferences</h2>
+        <p class="section-description">
+          Stay informed about our upcoming conferences designed to enhance your professional development and foster networking opportunities.
+        </p>
+        <div class="cards-container" id="events-container" (scroll)="updateActiveDot('events-container', 'activeEventIndex')">
+            <div *ngFor="let event of events; let i = index" class="card">
+              <img [src]="event.image" alt="Event Image" class="card-image">
+            </div>
+          </div>
+          <div class="dots-container">
+            <span *ngFor="let dot of dots; let i = index" class="dot" [class.active]="activeEventIndex === i" (click)="scrollToEventGroup(i)"></span>
+          </div>
+        </section>
+    
+      <!-- Seminars Section -->
+      <section id="seminars" class="seminars">
+        <h2>📚 Available Seminars</h2>
+        <p class="section-description">
+          Explore our wide range of professionally curated seminars aimed at boosting your skills and empowering your career growth.
+        </p>
+        <div class="cards-container" id="courses-container" (scroll)="updateActiveDot('courses-container', 'activeCourseIndex')">
+            <div *ngFor="let course of courses; let i = index" class="card">
+              <img [src]="course.image" alt="Course Image" class="card-image">
+              <div class="card-content">
+                <h3>{{ course.title }}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="dots-container">
+            <span *ngFor="let dot of dots; let i = index" class="dot" [class.active]="activeCourseIndex === i" (click)="scrollToCourseGroup(i)"></span>
+          </div>
+        </section>
+    
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© 2025 TimeMaster. All Rights Reserved.</p>
+      </footer>
+    </div>

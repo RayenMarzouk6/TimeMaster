@@ -1,0 +1,148 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<!-- Top Right Section: Profile, Search, and Notifications -->
+<div class="top-right-section">
+  <!-- Profile Section -->
+       <!-- Search Bar -->
+       <div class="search-bar">
+        <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+      </div>
+  <div class="profile-section">
+    <div class="profile-pic">
+      <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+    </div>
+    <div class="profile-info">
+      <p class="admin-name">{{ userDetails.username }}</p>
+      <p class="admin-email">admin</p>
+    </div>
+  
+  </div>
+
+  <!-- Notification Icon -->
+  <img
+    src="assets/adminhome/notif.png"
+    alt="Notification"
+    class="notif-image"
+  />
+</div>
+
+<!-- Teachers Management Section -->
+<div class="teachers-container">
+  <h2>Manage Teachers</h2>
+  <div class="title-underline"></div>
+
+  <!-- Add/Update Teacher Section -->
+  <p class="section-title">{{ isEditing ? 'Edit Teacher' : 'Add a Teacher' }}</p>
+  <div class="add-teacher-section">
+    <form class="add-teacher-form" (ngSubmit)="saveTeacher()">
+      <div class="form-group">
+        <label for="teacherName">Teacher Name</label>
+        <input
+          type="text"
+          id="teacherName"
+          [(ngModel)]="teacherName"
+          name="teacherName"
+          placeholder="Enter teacher name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="teacherCIN">Teacher CIN</label>
+        <input
+          type="text"
+          id="teacherCIN"
+          [(ngModel)]="teacherCIN"
+          name="teacherCIN"
+          placeholder="Enter teacher CIN"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="teacherSubjects">Select Teacher Subjects</label>
+        <select
+          id="teacherSubjects"
+          [(ngModel)]="teacherSubjects"
+          name="teacherSubjects"
+          multiple
+        >
+          <option *ngFor="let subject of subjects" [value]="subject.name">
+            {{ subject.name }}
+          </option>
+        </select>
+      </div>
+
+      <button class="add-teacher-btn" type="submit">
+        <img
+          src="assets/icons/Add.png"
+          alt="Add Teacher"
+          width="20"
+          height="20"
+        />
+        {{ isEditing ? 'Save Changes' : 'Add Teacher' }}
+      </button>
+    </form>
+  </div>
+
+ <!-- List of Teachers -->
+<p class="section-title">All Teachers</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>CIN</th>
+      <th>Teacher Name</th>
+      <th>Subjects</th> <!-- Add a new column for subjects -->
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of teachers; let i = index">
+      <td>{{ teacher.cin || 'No CIN' }}</td>
+      <td>{{ teacher.name || 'No name' }}</td>
+      <td>
+        <!-- Display subjects if they exist, otherwise display 'No subjects' -->
+        <span *ngIf="teacher.subjects && teacher.subjects.length > 0">
+          {{ teacher.subjects.join(', ') }}
+        </span>
+        <span *ngIf="!teacher.subjects || teacher.subjects.length === 0">No subjects</span>
+      </td>
+      <td>
+        <!-- Edit Teacher Button -->
+        <button
+          class="action-btn"
+          title="Edit Teacher"
+          (click)="editTeacher(teacher)"
+        >
+          <img
+            src="assets/icons/Button_Edit.png"
+            alt="Edit"
+            width="80"
+            height="30"
+          />
+        </button>
+
+        <!-- Delete Teacher Button -->
+        <button
+          class="action-btn"
+          title="Delete Teacher"
+          (click)="deleteTeacher(teacher.cin)"
+        >
+          <img
+            src="assets/icons/Button_Del.png"
+            alt="Delete"
+            width="80"
+            height="30"
+          />
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+   <!-- Footer Section -->
+   <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div> 

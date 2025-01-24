@@ -1,0 +1,145 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<div class="establishments-container">
+  <!-- Profile and Notification Section -->
+  <div class="top-right-section">
+     <!-- Search Bar -->
+     <div class="search-bar">
+      <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p class="admin-name">{{ userDetails.username }}</p>
+        <p class="admin-email">admin</p>
+      </div>
+    </div>
+
+    <!-- Notification Icon -->
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+  </div>
+
+  <h2>Manage Establishments</h2>
+  <div class="title-underline"></div>
+
+  <!-- Add/Update Institution Title -->
+  <p class="section-title">{{ isEditMode ? 'Update Institution' : 'Add an Institution' }}</p>
+
+  <!-- Add/Update Establishment Section -->
+  <div class="add-establishment-section">
+    <form (ngSubmit)="addOrUpdateInstitution()" class="add-establishment-form">
+      <div class="form-group">
+        <label for="institutionName">Establishment Name</label>
+        <input 
+          type="text" 
+          id="institutionName" 
+          [(ngModel)]="newInstitution.name" 
+          name="institutionName" 
+          placeholder="Enter establishment name" 
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="institutionAddress">Address</label>
+        <input 
+          type="text" 
+          id="institutionAddress" 
+          [(ngModel)]="newInstitution.address" 
+          name="institutionAddress" 
+          placeholder="Enter address" 
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="institutionPhone">Phone</label>
+        <input 
+          type="text" 
+          id="institutionPhone" 
+          [(ngModel)]="newInstitution.phone" 
+          name="institutionPhone" 
+          placeholder="Enter phone number" 
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="institutionEmail">Email</label>
+        <input 
+          type="email" 
+          id="institutionEmail" 
+          [(ngModel)]="newInstitution.email" 
+          name="institutionEmail" 
+          placeholder="Enter email" 
+          required
+        />
+      </div>
+
+      <!-- Classroom Names -->
+      <div class="form-group" *ngFor="let classroomName of newInstitution.classroomNames; let i = index">
+        <label for="classroomName{{ i }}">Classroom Name</label>
+        <input 
+          type="text" 
+          [(ngModel)]="newInstitution.classroomNames[i]" 
+          name="classroomName{{ i }}" 
+          placeholder="Enter classroom name" 
+        />
+        <button class="action-btn remove-btn" type="button" (click)="removeClassroom(i)">
+          Remove
+        </button>
+      </div>
+      <button class="action-btn add-classroom-btn" type="button" (click)="addClassroom()">
+        Add Classroom
+      </button>
+
+      <button class="add-establishment-btn" type="submit">
+        <img src="assets/icons/Add.png" alt="Add Establishment" width="20" height="20" />
+        {{ isEditMode ? 'Update Establishment' : 'Add Establishment' }}
+      </button>
+    </form>
+  </div>
+
+  <p class="section-title">All Establishments</p>
+
+  <!-- Institutions Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Establishment Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Classrooms</th> <!-- Added Classrooms Column -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let institution of institutions; let i = index">
+        <td>{{ institution.id }}</td> <!-- Display the institution id -->
+        <td>{{ institution.name }}</td>
+        <td>{{ institution.address }}</td>
+        <td>{{ institution.phone }}</td>
+        <td>{{ institution.email }}</td>
+        <td>{{ getClassroomsNames(institution.classrooms) }}</td>
+        <td>
+          <!-- Update button -->
+          <button class="action-btn" (click)="editInstitution(institution)">
+            <img src="assets/icons/Button_Edit.png" alt="Update" width="80" height="30" />
+          </button>
+          <!-- Delete button -->
+          <button class="action-btn" (click)="deleteInstitution(institution.id)">
+            <img src="assets/icons/Button_Del.png" alt="Delete" width="80" height="30" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   <!-- Footer Section -->
+   <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>

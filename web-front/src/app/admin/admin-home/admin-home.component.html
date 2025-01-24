@@ -1,0 +1,105 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="admin-home-container">
+
+  <!-- Profile and Notification Section -->
+  <div class="top-right-section">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchQuery" (keyup)="onSearch()" />
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/teacher1.jpg" alt="Admin Profile" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p class="admin-name">{{ userDetails.username }}</p>
+        <p class="admin-email">admin</p>
+      </div>
+    </div>
+
+    <!-- Notification Icon -->
+    <img src="assets/adminhome/notif.png" alt="Notification" class="notif-image" />
+  </div>
+
+  <!-- Welcome and Info Section -->
+  <div class="welcome-container">
+    <div class="date-text">
+      <!-- Today's Date -->
+      <p>{{ todayDate }}</p>
+    </div>
+    <div class="welcome-content">
+      <div class="welcome-text-container">
+        <p class="welcome-text">Welcome back, {{ userDetails.username }}!</p>
+        <p class="info-text">Always stay updated in your student portal.</p>
+      </div>
+      <img src="assets/adminhome/photo.png" alt="Welcome Image" class="welcome-image" />
+    </div>
+  </div>
+
+  <!-- Dashboard Title -->
+  <div class="dashboard-title">
+    <p>Statistics</p>
+  </div>
+
+  <!-- Section Layout -->
+  <div class="section-layout">
+    <!-- Left Section -->
+    <div class="left-section">
+      <!-- Cards Section -->
+      <div class="cards-container">
+        <div class="card">
+          <img src="assets/adminhome/uni.png" alt="Institutions" class="card-icon" />
+          <p class="card-number">{{ totalInstitutions }}</p> <!-- Dynamic Total Institutions -->
+          <p class="card-text">Total Institutions</p>
+        </div>
+        <div class="card">
+          <img src="assets/adminhome/student.png" alt="Students" class="card-icon" />
+          <p class="card-number">{{ totalStudents }}</p>  <!-- Dynamic Total Students -->
+          <p class="card-text">Total Students</p>
+        </div>
+        <div class="card">
+          <img src="assets/adminhome/teacher.png" alt="Teachers" class="card-icon" />
+          <p class="card-number">{{ totalTeachers }}</p>  <!-- Dynamic Total Teachers -->
+          <p class="card-text">Total Teachers</p>
+        </div>
+      </div>
+
+      <!-- Enrolled Courses Section -->
+      <div class="enrolled-courses-title">
+        <p>Enrolled Courses</p>
+      </div>
+      <!-- Additional Section Image -->
+      <img src="assets/adminhome/section.png" alt="Section Image" class="section-image" />
+    </div>
+
+    <!-- Right Section (Teachers) -->
+    <div class="right-section">
+      <!-- Teachers Title -->
+      <div class="teacher-title">
+        <p>Course Instructors</p>
+      </div>
+
+      <!-- Teachers Section -->
+      <div class="teachers-container">
+        <img src="assets/adminhome/teacher1.jpg" alt="Teacher 1" class="teacher-image" />
+        <img src="assets/adminhome/teacher2.jpg" alt="Teacher 2" class="teacher-image" />
+        <img src="assets/adminhome/teacher3.jpg" alt="Teacher 3" class="teacher-image" />
+      </div>
+
+      <div class="notice-title">
+        <div class="notice-title-container">
+          <p>Daily notice</p>
+          <a href="#" class="see-all">See all</a> <!-- Added See all link next to the title -->
+        </div>
+      </div>
+      <img src="assets/adminhome/se.png" alt="Section Image" class="se-image" />
+    </div>
+  </div>
+    <!-- Footer Section -->
+  <div class="footer">
+    <p>&copy; 2025 TimeMaster. All rights reserved.</p>
+  </div>
+
+</div>
