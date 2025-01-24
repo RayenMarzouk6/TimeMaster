@@ -1,7 +1,7 @@
 # Time Master
 " Time Master " is a web and mobile platform designed to automatically generate timetables for students and teachers. It simplifies scheduling and enhances communication within educational institutions.
-![logo](https://github.com/user-attachments/assets/d5e315e5-9e56-4ed2-b33e-3899e7116e9b)
 
+![logo](https://github.com/user-attachments/assets/d5e315e5-9e56-4ed2-b33e-3899e7116e9b)
 ## 🌟 Key Features
 1. **Automatic Timetable Generation**
 Efficiently creates optimized schedules for students and teachers based on constraints like availability and resources.
@@ -19,10 +19,12 @@ Modern UI/UX for seamless interaction and navigation.
 # 💻 Technology Stack
 
 ## Frontend
-- Developed using **Flutter** to deliver a unified experience across web and mobile platforms.
+- **Mobile**: Developed using **Flutter** for a seamless cross-platform mobile experience.
+- **Web**: Built with **Angular** for a robust and dynamic web application.
 
 ## Backend
-- Supports integration with **Firebase** or other backend services for real-time data management and notifications.
+- Powered by **NestJS** for a scalable and efficient backend architecture.
+- Database: **MySQL** for reliable and structured data management.
 
 ## Notifications
 - **Email Integration**: Secure delivery of passwords to users.
@@ -32,6 +34,10 @@ Modern UI/UX for seamless interaction and navigation.
 - **Modular Architecture**: Designed for scalability and easy maintenance.
 - **Clean Codebase**: Well-documented and structured for effective collaboration.
 - **Open to Contributors**: Feel free to explore, fork, and submit pull requests!
+
+# 🔗 Links
+- **Behance Portfolio**: [View on Behance](https://www.behance.net/your-profile)
+
 
 ## Screenshots
 ![Image-9](https://github.com/user-attachments/assets/891383bc-901c-478f-ac38-3fa991259b51)
